@@ -1,4 +1,10 @@
+from prettytable import PrettyTable
 import random
+
+x1 = PrettyTable()
+x2 = PrettyTable()
+x1.field_names = ["Round", "Your Streak", "Computer's Streak"]
+x2.field_names = ["Your Score", "Computer's Score"]
 
 def badInput(mine, choices):
     print(f"\nYour input \"{mine}\" does not comply by the input cases.\nWanna try again?")
@@ -15,10 +21,10 @@ def badInput(mine, choices):
                 quit()
 
     elif yn == "no" or yn == "n":
-        print("Thankyou for holding up!")
+        print("\n\nThankyou for holding up!\n")
         quit()
     else:
-        print("\nBad input again!\nBye-Bye.\n")
+        print("\n\nBad input again!\nBye-Bye.\n")
         quit()
 
 
@@ -31,8 +37,8 @@ def inputs(mwins, cwins):
         myChoice = badInput(myChoice, userChoices)
     if myChoice.isupper(): compChoice = compChoice.upper()
     else: compChoice = compChoice.lower()
-    stat, mine, comps = singlePlay(myChoice, compChoice, mwins, cwins)
-    return (stat, mine, comps)
+    stat, mine, comps, res = singlePlay(myChoice, compChoice, mwins, cwins)
+    return (stat, mine, comps, res)
 
 
 def singlePlay(mine, comp, mwins, cwins):
@@ -40,28 +46,37 @@ def singlePlay(mine, comp, mwins, cwins):
     win = ["\n*** Your choice \"{}\" and the Computer's choice \"{}\" makes you the winner! ***\n", "\n*** Ahann.. Your choice \"{}\" makes you win against Computer's \"{}\". ***\n", "\n*** Very thoughtful of you to choose \"{}\"!.. You won against \"{}\". ***\n"]
     los = ["\n*** Pff.. these Computers! Your \"{}\" lost against \"{}\". ***\n", "\n*** OOPS!.. looks like Your \"{}\" lost against Computer's \"{}\". ***\n", "\n*** {} vs {}.. Hope you know what it means.. Sorry! ***\n"]
     if mine == comp:
-        return (random.choice(tie).format(mine, comp), mwins, cwins)
+        return (random.choice(tie).format(mine, comp), mwins, cwins, 0)
     if (mine.lower() == "r" and comp.lower() == "s") or (mine.lower() == "p" and comp.lower() == "r") or (mine.lower() == "s" and comp.lower() == "p"):
         mwins += 1
-        return (random.choice(win).format(mine, comp), mwins, cwins)
+        return (random.choice(win).format(mine, comp), mwins, cwins, 1)
     cwins += 1
-    return (random.choice(los).format(mine, comp), mwins, cwins)
+    return (random.choice(los).format(mine, comp), mwins, cwins, -1)
 
 
 def bestOf(rounds, mwins, cwins):
+    counter = 1
     while mwins < (rounds//2 + 1) and cwins < (rounds//2 + 1):
-        stat, mine, comps = inputs(mwins, cwins)
+        stat, mine, comps, res= inputs(mwins, cwins)
         print(stat)
         mwins, cwins = mine, comps
-        print(f"Your wins : {mwins}   Comp wins : {cwins}")
-    if mwins > cwins: print("Congratulations!.. You just won!.. What a Champ!")
-    else: print("Better luck next time buddy. You Computer's still smarter.")
+        if res == 1: x1.add_row([counter, "Win", "Loss"])
+        elif res == -1: x1.add_row([counter, "Loss", "Win"])
+        else: x1.add_row([counter, "N/R", "N/R"])
+        print(x1)
+        counter += 1
+        x2.add_row([mwins, cwins])
+        print(x2)
+        x2.clear_rows()
+        print("\n")
+    if mwins > cwins: print("\n\nCongratulations!.. You just won!.. What a Champ!\n\n")
+    else: print("\n\nBetter luck next time buddy. You Computer's still smarter.\n\n")
 
 
 if __name__ == "__main__":
     times = int(input("\nHow many rounds do you wanna compete? : "))
     if times == 0:
-        print("Cool.. as you wish :(")
+        print("\n\nCool.. as you wish :(\n")
         quit()
     mwins, cwins = 0, 0
     bestOf(times, mwins, cwins)
