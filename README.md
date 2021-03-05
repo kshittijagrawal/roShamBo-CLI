@@ -26,5 +26,5 @@ Another piece that makes it a bit more interesting is the code randomly choosing
 We can change the number of chances given to the user, which by default is 3, to rectify the bad input and go with a valid input.  
   
   
-### PS
+### PS.
 Doesn't matter if the user gives an **even number** as an input for the number of rounds to be played, the winning score will always be considered as the ceil value of the rounds/2.
