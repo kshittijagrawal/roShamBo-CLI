@@ -5,4 +5,4 @@ The thing that makes this version a bit more intriguing is it's capacity to **ha
 
 There's obviously no need to specify the rules to play!  
 
-![](images/game.PNG)
+![Game Play Snapshot](images/game.PNG)
