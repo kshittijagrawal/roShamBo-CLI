@@ -76,7 +76,14 @@ def bestOf(rounds, mwins, cwins): #the most vital function that handles the game
 
 
 if __name__ == "__main__": #the main driver code
-    times = int(input("\nHow many rounds do you wanna compete? : "))
+    times = input("""\n\nHow many valid games do you wanna compete?
+A game is valid only if we have a clear winner for the round.
+Enter HERE : """)
+    try:
+        times = int(times)
+    except:
+        print("\n\nSorry!.. You just hit the wrong part of the keyboard.\n")
+        quit()
     if times == 0:
         print("\n\nCool.. as you wish :(\n")
         quit()
