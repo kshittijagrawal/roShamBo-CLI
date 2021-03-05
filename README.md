@@ -3,4 +3,6 @@ An interactive version of the game called Ro-Sham-Bo, or better known as Rock-Pa
 
 The thing that makes this version a bit more intriguing is it's capacity to **handle almost all kinds of bad input** by the user and the **depiction of the Winning or Losing streak** in the form of tables.  
 
-There's obviously no need to specify the rules to play!
+There's obviously no need to specify the rules to play!  
+
+![](images/game.PNG)
