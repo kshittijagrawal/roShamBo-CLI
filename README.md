@@ -5,7 +5,7 @@ The thing that makes this version a bit more intriguing is it's capacity to **ha
 
 There's obviously no need to specify the rules to play!  
 
-### Requirement
+### Requirement.
 Run the command to update pip from the command line:  
 ```
 pip install --upgrade pip
@@ -16,11 +16,15 @@ pip install prettytable
 ```
   
   
-### A snapshot from the gameplay
+### A snapshot from the gameplay.
 <img src="images/game.PNG" width=400>  
 Another piece that makes it a bit more interesting is the code randomly choosing the result statement from a list of given statements for each of the result cases, making the outcome of each round a bit more engrossing.  
   
   
-### A snapshot of bad input case
+### A snapshot of bad input case.
 <img src="images/badinput.PNG" width=400>  
-We can change the number of chances given to the user, which by default is 3, to rectify the bad input and go with a valid input.
+We can change the number of chances given to the user, which by default is 3, to rectify the bad input and go with a valid input.  
+  
+  
+### PS
+Doesn't matter if the user gives an **even number** as an input for the number of rounds to be played, the winning score will always be considered as the ceil value of the rounds/2.
