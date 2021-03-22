@@ -6,11 +6,11 @@ The thing that makes this version a bit more intriguing is it's capacity to **ha
 There's obviously no need to specify the rules to play!  
 
 ### Requirement.
-Run the command to update pip from the command line:  
+* Run the command to update pip from the command line:  
 ```
 pip install --upgrade pip
 ```
-Run the command to install the **PrettyTable** module:  
+* Run the command to install the **PrettyTable** module:  
 ```
 pip install prettytable
 ```
